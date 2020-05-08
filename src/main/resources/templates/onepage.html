@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+		<script th:src="@{/js/jquery-3.3.1.min.js}" type="text/javascript"></script>
+		<script th:src="@{/js/bootstrap.min.js}"  type="text/javascript"></script>
+
+		<script th:src="@{/ue/ueditor.config.js}"  type="text/javascript"></script>
+		<script th:src="@{/ue/ueditor.all.js}"  type="text/javascript"></script>	
+		<script th:src="@{/ue/lang/zh-cn/zh-cn.js}"  type="text/javascript"></script>
+		<title>运动资讯</title>
+		</head>
+	<body>
+	<div class="container">
+
+			<div class="row" th:unless="${#strings.isEmpty(paper.content)}">
+				<span th:utext="${paper.content}"></span>
+			</div>
+			<div style="float:left; margin:20px">
+				<p th:text="'作者： ' +${paper.author}"></p>
+				<p th:text="'最后更新时间：: ' +${paper.lastupdate}"></p>
+			</div>	
+	</div>
+
+
+	</body>
+</html>

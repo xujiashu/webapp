@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link
+	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i"
+	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script src="https://cdn.bootcss.com/vue/2.5.15/vue.min.js"></script>
+
+</head>
+<body class="animsition">
+	<div id="app">
+		<div v-for="c in commodities">
+			<div class="shop-layout-1" id="page">
+				<section class="box-sm">
+					<div class="container">
+						<div class="row main">
+							<div
+								class="row product-grid-equal-height-wrapper product-equal-height-4-columns flex multi-row">
+								<figure class="item">
+									<div class="product product-style-1">
+										<div class="img-wrapper">
+											<a href="javascript:void(0)"><img class="img-responsive"
+												v-bind:src="c.image"  alt="product thumbnail" /></a>
+											<div class="product-control-wrapper bottom-right">
+												<div class="wrapper-control-item">
+													<a class="js-quick-view" href="#" type="button"
+														data-toggle="modal" data-target="#quick-view-product">
+														<span class="lnr lnr-eye"></span>
+													</a>
+												</div>
+												<div class="wrapper-control-item item-wish-list">
+													<a class="js-wish-list js-notify-add-wish-list" href="#">
+														<span class="lnr lnr-heart"></span>
+													</a>
+												</div>
+												<div
+													class="wrapper-control-item item-add-cart js-action-add-cart">
+													<a class="animate-icon-cart" href="#"> <span
+														class="lnr lnr-cart"></span>
+													</a>
+												</div>
+											</div>
+										</div>
+										<figcaption class="desc text-center">
+											<h3>
+												<a class="product-name" href="#">{{c.name}}</a>
+											</h3>
+											<span class="price">￥{{c.price}}</span>
+										</figcaption>
+									</div>
+								</figure>
+							</div>
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<!--通过data-target指定id显示弹窗-->
+			<div class="modal fade" id="quick-view-product" tabindex="-1"
+				role="dialog">
+				<div class="modal-dialog modal-lg modal-quickview woocommerce"
+					role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" type="button" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="woocommerce-product-gallery">
+										<div class="main-carousel-product-quick-view">
+											<div class="item">
+												<!--幻灯片-->
+												<img class="img-responsive" v-bind:src="c.image"
+													alt="product thumbnail" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="summary">
+										<div class="desc">
+											<div class="header-desc">
+												<h2 class="product-title">{{c.name}}</h2>
+												<p class="price">￥{{c.price}}</p>
+											</div>
+											<div class="body-desc">
+												<div class="woocommerce-product-details-short-description">
+													<p>{{c.description}}</p>
+												</div>
+											</div>
+											<div class="footer-desc">
+												<form class="cart">
+													<div class="quantity buttons-added">
+														<input class="minus" value="-" type="button" /> <input
+															class="input-text qty text" step="1" min="1" max=""
+															name="quantity" value="1" title="Qty" size="4"
+															pattern="[0-9]*" inputmode="numeric" type="number" /> <input
+															class="plus" value="+" type="button" />
+													</div>
+													<div class="group-btn-control-wrapper">
+														<button class="btn btn-brand no-radius">加入购物车</button>
+														<button class="btn btn-wishlist btn-brand-ghost no-radius">
+															<i class="fa fa-heart"></i>
+														</button>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div class="product-meta">
+											<p class="posted-in">
+												分类: <a href="#" rel="tag">{{c.ctype}}</a>
+											</p>
+
+											<p class="id">
+												ID: <a href="#">{{c.cid}}</a>
+											</p>
+										</div>
+										<div class="widget-social align-left">
+											<ul>
+												<li><a class="facebook" data-toggle="tooltip"
+													title="Facebook" href="http://www.facebook.com/authemes">
+														<i class="fa fa-facebook"></i>
+												</a></li>
+												<li><a class="pinterest" data-toggle="tooltip"
+													title="Pinterest" href="http://www.pinterest.com/authemes">
+														<i class="fa fa-pinterest"></i>
+												</a></li>
+												<li><a class="twitter" data-toggle="tooltip"
+													title="Twitter" href="http://www.twitter.com/authemes">
+														<i class="fa fa-twitter"></i>
+												</a></li>
+												<li><a class="google-plus" data-toggle="tooltip"
+													title="Google Plus" href="https://plus.google.com/authemes">
+														<i class="fa fa-google-plus"></i>
+												</a></li>
+												<li><a class="instagram" data-toggle="tooltip"
+													title="Instagram" href="https://instagram.com/authemes">
+														<i class="fa fa-instagram"></i>
+												</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script src="js/library/jquery.min.js"></script>
+	<script src="js/library/bootstrap.min.js"></script>
+	<script src="js/function-check-viewport.js"></script>
+	<script src="js/library/slick.min.js"></script>
+	<script src="js/library/select2.full.min.js"></script>
+	<script src="js/library/imagesloaded.pkgd.min.js"></script>
+	<script src="js/library/jquery.mmenu.all.min.js"></script>
+	<script src="js/library/rellax.min.js"></script>
+	<script src="js/library/isotope.pkgd.min.js"></script>
+	<script src="js/library/bootstrap-notify.min.js"></script>
+	<script src="js/library/bootstrap-slider.js"></script>
+	<script src="js/library/in-view.min.js"></script>
+	<script src="js/library/countUp.js"></script>
+	<script src="js/library/animsition.min.js"></script>
+	<script src="js/global.js"></script>
+	<script src="js/config-mm-menu.js"></script>
+	<script src="js/config-carousel-product-quickview.js"></script>
+	<!-- Demo Only-->
+	<script src="js/demo-add-to-cart.js"></script>
+
+
+	<script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                	commodities:[],
+					
+                }
+            },
+            methods: {
+            },
+            created() {
+                console.log("页面初始化完成111");
+            },
+            mounted() {
+                $this = this;
+                $.get("/c/commodities").done(function(a){
+                	$this.commodities = a;
+                })
+            }
+        })
+    </script>
+
+</body>
+</html>
+

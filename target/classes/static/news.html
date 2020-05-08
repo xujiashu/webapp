@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="js/library/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/vue/2.5.15/vue.min.js"></script>
+		<title>用户管理</title>
+		</head>
+		<body>
+<div id="news">
+<div>
+	
+</div>
+<!-- {{newss}} -->
+
+<ul v-for="ns in newss">
+	<li><a v-bind:href="['/c/newss/' + ns.nid]">{{ns.title}}--------{{ns.author}}--{{ns.lastupdate}}</a> </li>
+</ul>
+</div>
+
+
+	<script type="text/javascript">
+        new Vue({
+            el: '#news',
+            data() {
+                return {
+                	newss:"hello",
+					
+                }
+            },
+            methods: {
+            },
+            created() {
+                console.log("页面初始化完成111");
+            },
+            mounted() {
+                $this = this;
+                $.get("/c/newss").done(function(a){
+                	$this.newss = a;
+                })
+            }
+        })
+    </script>
+
+		
+		</body>
+</html>
